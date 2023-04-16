@@ -1,19 +1,21 @@
 package ar.utn.ap.Pronosticos;
 
-import java.util.Collection;
-
 public class Usuario {
+	int id;
 	String nombre;
 	int puntos;
-	Collection<Pronostico> pronosticos;
 	int aciertos;
 	
-	public Usuario(String nombre, Collection<Pronostico> pronosticos) {
+	public Usuario(int id, String nombre,int puntos, int aciertos) {
 		super();
+		this.id = id;
 		this.nombre = nombre;
-		this.puntos = 0;
-		this.pronosticos = pronosticos;
-		this.aciertos = 0;
+		this.puntos = puntos;
+		this.aciertos = aciertos;
+	}
+	
+	public int getId() {
+		return id;
 	}
 
 	public int getPuntos() {
@@ -31,15 +33,8 @@ public class Usuario {
 	public int getAciertos() {
 		return aciertos;
 	}
-	public void increaseAciertos() {
-		this.aciertos = this.aciertos + 1;
-	}
-
-	public Collection<Pronostico> getPronosticos() {
-		return pronosticos;
-	}
-	public void setPronosticos(Pronostico pronostico) {
-		pronosticos.add(pronostico);
+	public void increaseAciertos(int puntos) {
+		this.aciertos = this.aciertos + puntos;
 	}
 	
 	

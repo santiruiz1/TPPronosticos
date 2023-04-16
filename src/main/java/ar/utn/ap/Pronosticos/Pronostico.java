@@ -1,19 +1,25 @@
 package ar.utn.ap.Pronosticos;
 
 public class Pronostico {
-	String nombre;
+	int id;
+	int user;
 	int partido;
 	String resultado;
+	int goles1;
+	int goles2;
 	
-	public Pronostico(String nombre, int partido, String resultado) {
+	public Pronostico(int id, int user, int partido, String resultado, int goles1, int goles2) {
 		super();
-		this.nombre = nombre;
+		this.id = id;
+		this.user = user;
 		this.partido = partido;
 		this.resultado = resultado;
+		this.goles1 = goles1;
+		this.goles2 = goles2;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public int getUser() {
+		return user;
 	}
 
 	public int getPartido() {
