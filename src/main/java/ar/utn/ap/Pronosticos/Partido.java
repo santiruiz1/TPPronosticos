@@ -32,6 +32,12 @@ public class Partido {
 	public int getGoles2() {
 		return goles2;
 	}
+	public void setGoles1(int goles) {
+		this.goles1 = goles;
+	}
+	public void setGoles2(int goles) {
+		this.goles2 = goles;
+	}
 
 	
 	public String getResultado() {
