@@ -5,9 +5,9 @@ import java.util.Collection;
 
 import java.sql.*;
 
-import static ar.utn.ap.Pronosticos.Conexión.DB_URL;
-import static ar.utn.ap.Pronosticos.Conexión.USER;
-import static ar.utn.ap.Pronosticos.Conexión.PASS;
+import static ar.utn.ap.Pronosticos.Conexion.DB_URL;
+import static ar.utn.ap.Pronosticos.Conexion.USER;
+import static ar.utn.ap.Pronosticos.Conexion.PASS;
 
 public class Main {
 
@@ -188,46 +188,15 @@ public class Main {
             
             resultado.close();
             consulta.close();
-            int maxPts = 0;
-            Collection<Usuario> ganadores = new ArrayList<Usuario>();
+            
+            ResultadoFinal resultadoFinal = new ResultadoFinal(usuarios);
             System.out.println("RESULTADO FINAL");
-            for (Usuario usuario : usuarios) {
-            	System.out.println("El puntaje y aciertos FINALES de " + usuario.getNombre() + " fueron: " + usuario.puntos + " y " + usuario.aciertos);
-            	
-            	if (usuario.puntos > maxPts) {
-            		maxPts = usuario.puntos;
-            	}
-            }
+            
+            resultadoFinal.setMaxPts();
+            resultadoFinal.setGanadores();
+            resultadoFinal.setResultado();
             System.out.println();
-            
-            for (Usuario usuario : usuarios) {
-            	if (usuario.puntos == maxPts) {
-            		ganadores.add(usuario);
-            	}
-            }
-            if (maxPts > 0) {
-            	if (ganadores.size() == 1) {
-            		for (Usuario ganador : ganadores) {
-           				System.out.println("El ganador es: " + ganador.nombre);
-           			}
-            	}
-            	if (ganadores.size() == 2) {
-            		System.out.println("Los ganadores por EMPATE son:");
-           			for (Usuario ganador : ganadores) {
-           				System.out.println(ganador.nombre);
-           			}
-            	}
-            	if (ganadores.size() > 2) {
-            		System.out.println("Hay más de dos personas con el máximo puntaje, no hay ganadores.");
-            	}
-            } else {
-            	System.out.println("Nadie acertó una prediccíon, no hay ganadores.");
-            }
-            
-            
-		
-		
-		
+            System.out.println("El/Los ganador/es es/son " + resultadoFinal.getResultado());
 		
             // Esto se utiliza par cerrar la conexión con la base de datos
             conexion.close();
